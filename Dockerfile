@@ -1,11 +1,13 @@
 FROM alpine
 
 # Install Python.
-RUN \
-  apt-get update && \
-  apt-get install -y python python-dev python-pip python-virtualenv && \
-  rm -rf /var/lib/apt/lists/*
-
+RUN apk add --no-cache \
+    python \
+    python-dev \
+    py-pip \
+    build-base \
+  && pip install virtualenv
+  
 # Install Node.js
 RUN \
   cd /tmp && \
